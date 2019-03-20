@@ -2,9 +2,16 @@ package model.role.monster;
 
 import model.role.Role;
 
-public abstract class Monster extends Role {
+public class Monster extends Role {
     private int exploot;
     private int goldloot;
+
+    public Monster(String name, int hitPoint, int defense, int damage, int exploot, int goldloot) {
+        super(name, hitPoint, defense, damage);
+        this.exploot = exploot;
+        this.goldloot = goldloot;
+    }
+
 
     public int getExploot() {
         return exploot;

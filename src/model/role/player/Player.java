@@ -8,6 +8,14 @@ public abstract class Player extends Role {
     private int level;
     private int gold;
 
+    public Player(String name, int hitPoint, int defense, int damage, int magicPoint, int experience, int level, int gold) {
+        super(name, hitPoint, defense, damage);
+        this.magicPoint = magicPoint;
+        this.experience = experience;
+        this.level = level;
+        this.gold = gold;
+    }
+
     public int getMagicPoint() {
         return magicPoint;
     }
