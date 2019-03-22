@@ -14,6 +14,6 @@ public class Buildchoose {
 
     @FXML
     void chooseBuild(ActionEvent event) {
-        System.out.println(((Button)event.getSource()).getId());
+        System.out.println(((Button)event.getSource()).getText());
     }
 }
