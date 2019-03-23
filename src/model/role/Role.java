@@ -1,17 +1,10 @@
 package model.role;
 
 public abstract class Role {
-    private String name;
-    private int hitPoint;
-    private int defense;
-    private int damage;
-
-    public Role(String name, int hitPoint, int defense, int damage) {
-        this.name = name;
-        this.hitPoint = hitPoint;
-        this.defense = defense;
-        this.damage = damage;
-    }
+     String name;
+     int hitPoint;
+     int defense;
+     int damage;
 
     public String getName() {
         return name;

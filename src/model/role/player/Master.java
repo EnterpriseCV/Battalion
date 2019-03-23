@@ -9,7 +9,15 @@ import configuration.Config;
 public class Master extends Player {
 
     private Master(String name, int hitPoint, int defense, int damage, int magicPoint, int experience, int level, int gold) {
-        super(name, hitPoint, defense, damage, magicPoint, experience, level, gold);
+//        super(name, hitPoint, defense, damage, magicPoint, experience, level, gold);
+        this.setName(name);
+        this.setHitPoint(hitPoint);
+        this.setDefense(defense);
+        this.setDamage(damage);
+        this.setMagicPoint(magicPoint);
+        this.setExperience(experience);
+        this.setLevel(level);
+        this.setGold(gold);
     }
 
     private static Master master = new Master(Config.master_name,Config.master_hitPoint, Config.master_defense,
@@ -17,5 +25,30 @@ public class Master extends Player {
 
     public static Master getMaster(){
         return master;
+    }
+
+    @Override
+    public void updateDamage() {
+
+    }
+
+    @Override
+    public void updateDefense() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Master{" +
+                "name=" + getName() +
+                ", hitPoint=" + getHitPoint() +
+                ", defense=" + getDefense() +
+                ", damage=" + getDamage() +
+                ", magicPoint=" + magicPoint +
+                ", experience=" + experience +
+                ", level=" + level +
+                ", gold=" + gold +
+                ", equipments=" + equipments +
+                '}';
     }
 }

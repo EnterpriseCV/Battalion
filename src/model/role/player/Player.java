@@ -1,20 +1,22 @@
 package model.role.player;
 
+import model.equipment.EquipmentDecorator;
 import model.role.Role;
 
-public abstract class Player extends Role {
-    private int magicPoint;
-    private int experience;
-    private int level;
-    private int gold;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Player(String name, int hitPoint, int defense, int damage, int magicPoint, int experience, int level, int gold) {
-        super(name, hitPoint, defense, damage);
-        this.magicPoint = magicPoint;
-        this.experience = experience;
-        this.level = level;
-        this.gold = gold;
-    }
+public abstract class Player extends Role {
+
+    int magicPoint;
+    int experience;
+    int level;
+    int gold;
+    List<EquipmentDecorator> equipments = new ArrayList<>();
+
+    public abstract void updateDamage();
+
+    public abstract void updateDefense();
 
     public int getMagicPoint() {
         return magicPoint;
@@ -46,5 +48,13 @@ public abstract class Player extends Role {
 
     public void setGold(int gold) {
         this.gold = gold;
+    }
+
+    public List<EquipmentDecorator> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<EquipmentDecorator> equipments) {
+        this.equipments = equipments;
     }
 }

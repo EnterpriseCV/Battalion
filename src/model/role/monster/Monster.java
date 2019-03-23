@@ -7,7 +7,10 @@ public class Monster extends Role {
     private int goldloot;
 
     public Monster(String name, int hitPoint, int defense, int damage, int exploot, int goldloot) {
-        super(name, hitPoint, defense, damage);
+        this.setName(name);
+        this.setHitPoint(hitPoint);
+        this.setDefense(defense);
+        this.setDamage(damage);
         this.exploot = exploot;
         this.goldloot = goldloot;
     }
