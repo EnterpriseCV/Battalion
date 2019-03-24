@@ -52,15 +52,16 @@ public class SkillController {
 
 
     public ResultVO useSkill(Player player, Monster monster,String skillName) {
-        ResultVO vo = null;
+        ResultVO vo ;
         Skill skill = player.getSkills().get(skillName);
         vo = skill.checkBeforeUse();
         if(!vo.isState()){
             return vo;
         }else {
-            //TODO
+            vo = skill.useSkill(monster);
+            return vo;
         }
-        return vo;
+//        return vo;
     }
 
     /**

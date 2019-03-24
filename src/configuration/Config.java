@@ -13,7 +13,7 @@ public class Config {
     public static final int warrior_magicPoint = 100;
     public static final int warrior_exp = 0;
     public static final int warrior_level = 1;
-    public static final int warrior_gold = 2;
+    public static final int warrior_gold = 0;
 
 
     //法师属性

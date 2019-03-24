@@ -1,7 +1,11 @@
 package model.skill;
 
+import model.role.monster.Monster;
 import model.role.player.Player;
 import vo.ResultVO;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * created by Kimone
@@ -32,6 +36,11 @@ public class Skill {
         return vo;
     }
 
+    /**
+     * 不满足使用技能的条件 state=false
+     * 满足则 state=true
+     * @return
+     */
     public ResultVO checkBeforeUse(){
         ResultVO vo = new ResultVO();
         //check player's magic point
@@ -49,9 +58,15 @@ public class Skill {
         return vo;
     }
 
-    public ResultVO useSkill() {
-        ResultVO vo = new ResultVO();
+    public ResultVO useSkill(Monster monster) {
+        ResultVO vo = player.attackMonster(monster,damageRate);
+        player.setMagicPoint(player.getMagicPoint()-this.getConsumeMagicPoint());
+        this.setRemainTime(this.getCoolingTime());
 
+        Timer timer = new Timer();
+        Task task = new Task(timer,this);
+
+        timer.schedule(task,0, 1000);
         return vo;
     }
 
@@ -70,5 +85,77 @@ public class Skill {
             return vo;
         }
         return vo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getRoleLevel() {
+        return roleLevel;
+    }
+
+    public void setRoleLevel(int roleLevel) {
+        this.roleLevel = roleLevel;
+    }
+
+    public int getConsumeMagicPoint() {
+        return consumeMagicPoint;
+    }
+
+    public void setConsumeMagicPoint(int consumeMagicPoint) {
+        this.consumeMagicPoint = consumeMagicPoint;
+    }
+
+    public double getDamageRate() {
+        return damageRate;
+    }
+
+    public void setDamageRate(double damageRate) {
+        this.damageRate = damageRate;
+    }
+
+    public int getCoolingTime() {
+        return coolingTime;
+    }
+
+    public void setCoolingTime(int coolingTime) {
+        this.coolingTime = coolingTime;
+    }
+
+    public int getRemainTime() {
+        return remainTime;
+    }
+
+    public void setRemainTime(int remainTime) {
+        this.remainTime = remainTime;
+    }
+
+    public int getUpgradeGold() {
+        return upgradeGold;
+    }
+
+    public void setUpgradeGold(int upgradeGold) {
+        this.upgradeGold = upgradeGold;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

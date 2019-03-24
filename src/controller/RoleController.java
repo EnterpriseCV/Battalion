@@ -6,6 +6,7 @@ import factory.monsterFactory.MonsterFactory;
 import factory.playerFactory.PlayerFactory;
 import model.role.monster.Monster;
 import model.role.player.Player;
+import vo.ResultVO;
 
 /**
  * created by Kimone
@@ -31,4 +32,13 @@ public class RoleController {
         AbstractFactory factory = new MonsterFactory();
         return factory.getMonster(name);
     }
+
+    public ResultVO attackMonster(Player player, Monster monster) {
+        return player.attackMonster(monster,1);
+    }
+
+    public ResultVO attackPlayer(Player player, Monster monster) {
+        return monster.attackPlayer(player);
+    }
+
 }
