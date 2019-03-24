@@ -7,8 +7,8 @@ public class TheWorld {
 
     private Player player;
 
-    public static int locX = 10;
-    public static int locY = 10;
+    public static int locX = 0;
+    public static int locY = 0;
 
     private TheWorld(){
 

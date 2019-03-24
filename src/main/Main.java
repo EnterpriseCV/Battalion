@@ -1,15 +1,14 @@
 package main;
 
+import configuration.Map;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.TheWorld;
@@ -67,33 +66,39 @@ public class Main extends Application {
         AnchorPane ap = new AnchorPane();
 
 
-        Canvas c = new Canvas(1280,720);
-        c.getGraphicsContext2D().fillRect(TheWorld.locX,TheWorld.locY,30.0,40.0);
-        AnchorPane.setLeftAnchor(c,0.0);
-        AnchorPane.setTopAnchor(c,0.0);
+        Canvas c = new Canvas(700,700);
+        AnchorPane.setLeftAnchor(c,10.0);
+        AnchorPane.setTopAnchor(c,40.0);
 
         c.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode()== KeyCode.UP){
-                    TheWorld.locY-=40;
+                    TheWorld.locY-=1;
                 }
                 if(event.getCode()== KeyCode.DOWN){
-                    TheWorld.locY+=40;
+                    TheWorld.locY+=1;
                 }
                 if(event.getCode()== KeyCode.LEFT){
-                    TheWorld.locX-=30;
+                    TheWorld.locX-=1;
                 }
                 if(event.getCode()== KeyCode.RIGHT){
-                    TheWorld.locX+=30;
+                    TheWorld.locX+=1;
                 }
-                c.getGraphicsContext2D().clearRect(0,0,c.getWidth(),c.getHeight());
-                c.getGraphicsContext2D().fillRect(TheWorld.locX,TheWorld.locY,30.0,40.0);
+                Map.repaint(c);
             }
         });
         c.setFocusTraversable(true);
-
+        c.requestFocus();
         ap.getChildren().addAll(c);
+
+
+
+
+
+
+
+
         Scene sc = new Scene(ap,1280,720);
         stage.setScene(sc);
 
