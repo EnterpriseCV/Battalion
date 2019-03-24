@@ -15,6 +15,9 @@ public class Images {
 
         imageString = "graphics/items/011-Braver01.png";
         map.put("player",new Image(imageString));
+
+        imageString = "graphics/battlers/031-01.png";
+        map.put("monster",new Image(imageString));
     }
 
 }

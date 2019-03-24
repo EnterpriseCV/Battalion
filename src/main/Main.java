@@ -1,6 +1,7 @@
 package main;
 
 import configuration.Map;
+import controller.BattleMap;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.TheWorld;
+import model.role.monster.Monster;
 
 
 public class Main extends Application {
@@ -66,80 +68,7 @@ public class Main extends Application {
     }
 
     public void gotoBattleMap(){
-        AnchorPane ap = new AnchorPane();
-
-
-        Canvas c = new Canvas(700,700);
-        AnchorPane.setLeftAnchor(c,10.0);
-        AnchorPane.setTopAnchor(c,10.0);
-
-        c.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                if(event.getCode()== KeyCode.UP){
-                    TheWorld.locY-=1;
-                }
-                if(event.getCode()== KeyCode.DOWN){
-                    TheWorld.locY+=1;
-                }
-                if(event.getCode()== KeyCode.LEFT){
-                    TheWorld.locX-=1;
-                }
-                if(event.getCode()== KeyCode.RIGHT){
-                    TheWorld.locX+=1;
-                }
-                Map.repaint(c);
-            }
-        });
-        c.setFocusTraversable(true);
-        c.requestFocus();
-        ap.getChildren().addAll(c);
-        Map.repaint(c);
-
-        Label hpLabel  = new Label("生命值");
-        AnchorPane.setLeftAnchor(hpLabel,900.0);
-        AnchorPane.setTopAnchor(hpLabel,10.0);
-        ap.getChildren().add(hpLabel);
-
-        Text hp = new Text(String.valueOf(TheWorld.getTheWorld().getPlayer().getHitPoint()));
-        AnchorPane.setLeftAnchor(hp,940.0);
-        AnchorPane.setTopAnchor(hp,10.0);
-        ap.getChildren().add(hp);
-
-
-        Label attackLabel  = new Label("攻击");
-        AnchorPane.setLeftAnchor(attackLabel,900.0);
-        AnchorPane.setTopAnchor(attackLabel,30.0);
-        ap.getChildren().add(attackLabel);
-
-        Text attack = new Text(String.valueOf(TheWorld.getTheWorld().getPlayer().getDamage()));
-        AnchorPane.setLeftAnchor(attack,940.0);
-        AnchorPane.setTopAnchor(attack,30.0);
-        ap.getChildren().add(attack);
-
-        Label defenseLabel  = new Label("防御");
-        AnchorPane.setLeftAnchor(defenseLabel,900.0);
-        AnchorPane.setTopAnchor(defenseLabel,50.0);
-        ap.getChildren().add(defenseLabel);
-
-        Text defense = new Text(String.valueOf(TheWorld.getTheWorld().getPlayer().getDefense()));
-        AnchorPane.setLeftAnchor(defense,940.0);
-        AnchorPane.setTopAnchor(defense,50.0);
-        ap.getChildren().add(defense);
-
-        Label goldLabel  = new Label("金币");
-        AnchorPane.setLeftAnchor(goldLabel,900.0);
-        AnchorPane.setTopAnchor(goldLabel,70.0);
-        ap.getChildren().add(goldLabel);
-
-        Text gold = new Text(String.valueOf(TheWorld.getTheWorld().getPlayer().getGold()));
-        AnchorPane.setLeftAnchor(gold,940.0);
-        AnchorPane.setTopAnchor(gold,70.0);
-        ap.getChildren().add(gold);
-
-
-
-        Scene sc = new Scene(ap,1280,720);
+        Scene sc = new Scene(new BattleMap().getPane(),1280,720);
         stage.setScene(sc);
 
 
