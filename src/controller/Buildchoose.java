@@ -1,9 +1,12 @@
 package controller;
 
+import factory.AbstractFactory;
+import factory.playerFactory.PlayerFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
+import main.Main;
+import model.TheWorld;
 
 public class Buildchoose {
     @FXML
@@ -14,6 +17,14 @@ public class Buildchoose {
 
     @FXML
     void chooseBuild(ActionEvent event) {
-        System.out.println(((Button)event.getSource()).getText());
+        String buildName = ((Button)event.getSource()).getText();
+        if(buildName.equals("战士")){
+            buildName = "warrior";
+        }else if(buildName.equals("法师")){
+            buildName = "master";
+        }
+        AbstractFactory fac = new PlayerFactory();
+        TheWorld.getTheWorld().setPlayer(fac.getPlayer(buildName));
+        Main.getInstance().navigateTo("equipmentchoose");
     }
 }

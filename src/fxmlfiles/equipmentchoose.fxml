@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EquipmentChoose">
+   <children>
+      <Label layoutX="270.0" layoutY="45.0" text="装备选择" />
+      <Button fx:id="naviback" layoutX="132.0" layoutY="275.0" mnemonicParsing="false" onAction="#choosebuild" text="返回" />
+      <Button fx:id="confirm" layoutX="432.0" layoutY="275.0" mnemonicParsing="false" onAction="#actionStation" text="确定" />
+   </children>
+</AnchorPane>

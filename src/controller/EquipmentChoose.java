@@ -4,8 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import main.Main;
 
-public class NameEnter {
+public class EquipmentChoose {
 
     @FXML
     private Button confirm;
@@ -16,9 +17,13 @@ public class NameEnter {
     @FXML
     private TextField playName;
 
+    public EquipmentChoose(){
+        this.playName.setText("xxx");
+    }
+
     @FXML
     void choosebuild(ActionEvent event) {
-
+        Main.getInstance().navigateTo("buildchoose");
     }
 
     @FXML
