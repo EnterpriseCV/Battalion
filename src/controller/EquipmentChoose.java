@@ -18,7 +18,6 @@ public class EquipmentChoose {
     private TextField playName;
 
     public EquipmentChoose(){
-        this.playName.setText("xxx");
     }
 
     @FXML
