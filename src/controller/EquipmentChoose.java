@@ -18,7 +18,6 @@ public class EquipmentChoose {
     private TextField playName;
 
     public EquipmentChoose(){
-        this.playName.setText("xxx");
     }
 
     @FXML
@@ -28,7 +27,7 @@ public class EquipmentChoose {
 
     @FXML
     void actionStation(ActionEvent event) {
-
+        Main.getInstance().gotoBattleMap();
     }
 
 }

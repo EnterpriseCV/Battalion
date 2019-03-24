@@ -1,12 +1,17 @@
 package main;
 
+import configuration.Map;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.net.URLDecoder;
+import model.TheWorld;
 
 public class Main extends Application {
     private Stage stage;
@@ -55,5 +60,48 @@ public class Main extends Application {
         }
         stage.sizeToScene();
         return page;
+    }
+
+    public void gotoBattleMap(){
+        AnchorPane ap = new AnchorPane();
+
+
+        Canvas c = new Canvas(700,700);
+        AnchorPane.setLeftAnchor(c,10.0);
+        AnchorPane.setTopAnchor(c,40.0);
+
+        c.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode()== KeyCode.UP){
+                    TheWorld.locY-=1;
+                }
+                if(event.getCode()== KeyCode.DOWN){
+                    TheWorld.locY+=1;
+                }
+                if(event.getCode()== KeyCode.LEFT){
+                    TheWorld.locX-=1;
+                }
+                if(event.getCode()== KeyCode.RIGHT){
+                    TheWorld.locX+=1;
+                }
+                Map.repaint(c);
+            }
+        });
+        c.setFocusTraversable(true);
+        c.requestFocus();
+        ap.getChildren().addAll(c);
+
+
+
+
+
+
+
+
+        Scene sc = new Scene(ap,1280,720);
+        stage.setScene(sc);
+
+
     }
 }
