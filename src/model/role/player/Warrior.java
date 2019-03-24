@@ -47,6 +47,7 @@ public class Warrior extends Player {
                 ", level=" + level +
                 ", gold=" + gold +
                 ", equipments=" + equipments +
+                ", skills=" + skills +
                 '}';
     }
 }

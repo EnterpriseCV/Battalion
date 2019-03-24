@@ -12,13 +12,23 @@ import model.role.player.Player;
  * date 2019/3/23
  */
 public class RoleController {
+    /**
+     * playerName: master/warrior
+     * @param playerName
+     * @return
+     */
     public Player createPlayer(String playerName){
         AbstractFactory factory = new PlayerFactory();
         return factory.getPlayer(playerName);
     }
 
-//    public Monster createMonster(String ){
-//        AbstractFactory factory = new MonsterFactory();
-//        return factory.getMonster()
-//    }
+    /**
+     * name: monster01/monster02
+     * @param name
+     * @return
+     */
+    public Monster createMonster(String name){
+        AbstractFactory factory = new MonsterFactory();
+        return factory.getMonster(name);
+    }
 }

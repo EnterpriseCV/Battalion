@@ -15,8 +15,16 @@ public class MonsterFactory extends AbstractFactory {
         return null;
     }
 
+
     @Override
     public Monster getMonster(String name) {
-        return null;
+        Monster monster = null;
+        if (name.equals("monster01")) {
+            monster = new Monster("怪物1", 50, 1, 10, 2, 10);
+        }
+        if (name.equals("monster02")) {
+            monster = new Monster("怪物2", 80, 1, 20, 5, 10);
+        }
+        return monster;
     }
 }

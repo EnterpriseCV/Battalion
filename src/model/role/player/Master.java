@@ -49,6 +49,7 @@ public class Master extends Player {
                 ", level=" + level +
                 ", gold=" + gold +
                 ", equipments=" + equipments +
+                ", skills=" + skills +
                 '}';
     }
 }
