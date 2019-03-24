@@ -27,7 +27,7 @@ public class EquipmentChoose {
 
     @FXML
     void actionStation(ActionEvent event) {
-
+        Main.getInstance().gotoBattleMap();
     }
 
 }

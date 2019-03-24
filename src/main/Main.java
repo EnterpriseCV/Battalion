@@ -1,12 +1,18 @@
 package main;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.net.URLDecoder;
+import model.TheWorld;
 
 public class Main extends Application {
     private Stage stage;
@@ -55,5 +61,42 @@ public class Main extends Application {
         }
         stage.sizeToScene();
         return page;
+    }
+
+    public void gotoBattleMap(){
+        AnchorPane ap = new AnchorPane();
+
+
+        Canvas c = new Canvas(1280,720);
+        c.getGraphicsContext2D().fillRect(TheWorld.locX,TheWorld.locY,30.0,40.0);
+        AnchorPane.setLeftAnchor(c,0.0);
+        AnchorPane.setTopAnchor(c,0.0);
+
+        c.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if(event.getCode()== KeyCode.UP){
+                    TheWorld.locY-=40;
+                }
+                if(event.getCode()== KeyCode.DOWN){
+                    TheWorld.locY+=40;
+                }
+                if(event.getCode()== KeyCode.LEFT){
+                    TheWorld.locX-=30;
+                }
+                if(event.getCode()== KeyCode.RIGHT){
+                    TheWorld.locX+=30;
+                }
+                c.getGraphicsContext2D().clearRect(0,0,c.getWidth(),c.getHeight());
+                c.getGraphicsContext2D().fillRect(TheWorld.locX,TheWorld.locY,30.0,40.0);
+            }
+        });
+        c.setFocusTraversable(true);
+
+        ap.getChildren().addAll(c);
+        Scene sc = new Scene(ap,1280,720);
+        stage.setScene(sc);
+
+
     }
 }

@@ -6,6 +6,10 @@ public class TheWorld {
     private static TheWorld theWorld = new TheWorld();
 
     private Player player;
+
+    public static int locX = 10;
+    public static int locY = 10;
+
     private TheWorld(){
 
     }
