@@ -12,6 +12,9 @@ public class Images {
 
         imageString = "graphics/tilesets/MTpass1.png";
         map.put("floor",new Image(imageString));
+
+        imageString = "graphics/items/011-Braver01.png";
+        map.put("player",new Image(imageString));
     }
 
 }

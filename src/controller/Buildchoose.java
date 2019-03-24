@@ -23,8 +23,7 @@ public class Buildchoose {
         }else if(buildName.equals("法师")){
             buildName = "master";
         }
-        AbstractFactory fac = new PlayerFactory();
-        TheWorld.getTheWorld().setPlayer(fac.getPlayer(buildName));
+        TheWorld.getTheWorld().setPlayer(new RoleController().createPlayer(buildName));
         Main.getInstance().navigateTo("equipmentchoose");
     }
 }

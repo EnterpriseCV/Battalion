@@ -47,6 +47,6 @@ public class Map {
             }
         }
 
-        c.getGraphicsContext2D().fillRect(TheWorld.locX*cell_width,TheWorld.locY*cell_height,cell_width,cell_height);
+        c.getGraphicsContext2D().drawImage((Image)Images.map.get("player"),TheWorld.locX*cell_width,TheWorld.locY*cell_height,cell_width,cell_height);
     }
 }
