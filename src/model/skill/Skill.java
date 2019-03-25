@@ -58,6 +58,11 @@ public class Skill {
         return vo;
     }
 
+    /**
+     * 使用技能
+     * @param monster
+     * @return
+     */
     public ResultVO useSkill(Monster monster) {
         ResultVO vo = player.attackMonster(monster,damageRate);
         player.setMagicPoint(player.getMagicPoint()-this.getConsumeMagicPoint());
@@ -70,6 +75,10 @@ public class Skill {
         return vo;
     }
 
+    /**
+     * 升级技能
+     * @return
+     */
     public ResultVO upgrade() {
         ResultVO vo = new ResultVO();
         if(player.getGold() >= upgradeGold) {

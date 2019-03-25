@@ -7,6 +7,7 @@ import vo.ResultVO;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Map;
 
 /**
  * created by Kimone
@@ -14,7 +15,7 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class SkillController {
     /**
-     *
+     *添加技能
      * @param player
      * @param skills Thump/Fire
      */
@@ -51,6 +52,13 @@ public class SkillController {
     }
 
 
+    /**
+     * 使用技能
+     * @param player
+     * @param monster
+     * @param skillName
+     * @return
+     */
     public ResultVO useSkill(Player player, Monster monster,String skillName) {
         ResultVO vo ;
         Skill skill = player.getSkills().get(skillName);
@@ -72,5 +80,10 @@ public class SkillController {
     public ResultVO upgradeSkill(Player player, String skillName) {
         Skill skill = player.getSkills().get(skillName);
         return skill.upgrade();
+    }
+
+    public void removeAllSkill(Player player) {
+        Map<String, Skill> skillMap = player.getSkills();
+        skillMap.clear();
     }
 }
