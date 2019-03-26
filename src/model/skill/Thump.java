@@ -22,6 +22,23 @@ public class Thump extends Skill {
     }
 
     @Override
+    public ResultVO upgrade() {
+        ResultVO vo = new ResultVO();
+        if(player.getGold() >= upgradeGold) {
+            player.setGold(player.getGold()-upgradeGold);
+            level++;
+            damageRate+=level*0.1;
+            coolingTime+=1;
+            consumeMagicPoint+=1*level;
+            upgradeGold++;
+        }else {
+            vo.setState(false);
+            vo.setMessage("您的金币不足，无法升级"+name+"技能");
+            return vo;
+        }
+        return vo;
+    }
+    @Override
     public String toString() {
         return "Thump{" +
                 "name='" + name + '\'' +
