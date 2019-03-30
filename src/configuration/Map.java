@@ -45,26 +45,4 @@ public class Map {
         monster.setY(0);
         monsterList.add(monster);
     }
-
-
-    public static void repaint(Canvas c){
-        c.getGraphicsContext2D().clearRect(0,0,c.getWidth(),c.getHeight());
-        for(int i=0;i<map.length;i++){
-            for(int j=0;j<map[i].length;j++){
-                Image image = null;
-                if(map[i][j]==0){
-                    image = (Image)Images.map.get("floor");
-                }
-                if(map[i][j]==1){
-                    image = (Image)Images.map.get("wall");
-                }
-                c.getGraphicsContext2D().drawImage(image,j*cell_width,i*cell_height,cell_width,cell_height);
-            }
-        }
-
-        c.getGraphicsContext2D().drawImage((Image)Images.map.get("player"),TheWorld.getTheWorld().getPlayer().getX()*cell_width,TheWorld.getTheWorld().getPlayer().getY()*cell_height,cell_width,cell_height);
-        for(Monster monster:monsterList){
-            c.getGraphicsContext2D().drawImage((Image)Images.map.get("monster"),monster.getX()*cell_width,monster.getY()*cell_height,cell_width,cell_height);
-        }
-    }
 }

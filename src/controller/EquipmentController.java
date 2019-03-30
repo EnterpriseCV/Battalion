@@ -72,4 +72,6 @@ public class EquipmentController {
         List equipments = player.getEquipments();
         equipments.add(equipment);
     }
+
+
 }

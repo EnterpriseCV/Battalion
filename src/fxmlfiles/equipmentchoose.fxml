@@ -6,24 +6,27 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EquipmentChoose">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EquipmentChoose">
    <children>
       <Label layoutX="270.0" layoutY="45.0" text="装备选择" />
       <Button fx:id="naviback" layoutX="132.0" layoutY="275.0" mnemonicParsing="false" onAction="#choosebuild" text="返回" />
       <Button fx:id="confirm" layoutX="432.0" layoutY="275.0" mnemonicParsing="false" onAction="#actionStation" text="确定" />
-      <RadioButton layoutX="126.0" layoutY="123.0" mnemonicParsing="false" selected="true" text="法杖">
+      <RadioButton layoutX="126.0" layoutY="123.0" mnemonicParsing="false" onAction="#weaponchanged" selected="true" text="法杖">
          <toggleGroup>
             <ToggleGroup fx:id="weaponsGroup" />
          </toggleGroup>
       </RadioButton>
       <Label layoutX="83.0" layoutY="124.0" text="武器" />
       <Label layoutX="392.0" layoutY="125.0" text="防具" />
-      <RadioButton layoutX="126.0" layoutY="153.0" mnemonicParsing="false" text="枪" toggleGroup="$weaponsGroup" />
+      <RadioButton layoutX="126.0" layoutY="153.0" mnemonicParsing="false" onAction="#weaponchanged" text="枪" toggleGroup="$weaponsGroup" />
+
       <RadioButton layoutX="427.0" layoutY="124.0" mnemonicParsing="false" selected="true" text="布甲">
          <toggleGroup>
             <ToggleGroup fx:id="armorGroup" />
          </toggleGroup>
       </RadioButton>
       <RadioButton layoutX="427.0" layoutY="153.0" mnemonicParsing="false" text="铁甲" toggleGroup="$armorGroup" />
+      <CheckBox fx:id="stock" layoutX="192.0" layoutY="153.0" mnemonicParsing="false" text="枪托" visible="false"/>
+      <CheckBox fx:id="sight" layoutX="192.0" layoutY="184.0" mnemonicParsing="false" text="瞄准镜" visible="false"/>
    </children>
 </AnchorPane>

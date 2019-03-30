@@ -1,5 +1,6 @@
-package controller;
+package view;
 
+import controller.RoleController;
 import factory.AbstractFactory;
 import factory.playerFactory.PlayerFactory;
 import javafx.event.ActionEvent;

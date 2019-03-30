@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Buildchoose">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Buildchoose">
    <children>
       <Button fx:id="warriorButton" layoutX="151.0" layoutY="189.0" mnemonicParsing="false" onAction="#chooseBuild" text="战士"/>
       <Button fx:id="mageButton" layoutX="383.0" layoutY="189.0" mnemonicParsing="false" onAction="#chooseBuild" text="法师"/>

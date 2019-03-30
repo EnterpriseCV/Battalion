@@ -1,11 +1,9 @@
-package controller;
+package view;
 
+import controller.EquipmentController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import main.Main;
 import model.TheWorld;
 
@@ -22,6 +20,13 @@ public class EquipmentChoose {
 
     @FXML
     private ToggleGroup armorGroup;
+
+
+    @FXML
+    private CheckBox sight;
+
+    @FXML
+    private CheckBox stock;
 
 
     public EquipmentChoose(){
@@ -43,6 +48,15 @@ public class EquipmentChoose {
         }
         if(weapon.equals("枪")){
             weapon="GunWithNone";
+            if(sight.isSelected()){
+                weapon = "GunWithSight";
+            }
+            if(stock.isSelected()){
+                weapon = "GunWithStock";
+            }
+            if(sight.isSelected()&&stock.isSelected()){
+                weapon = "GunWithSightAndStock";
+            }
         }
 
         if(armor.equals("布甲")){
@@ -53,6 +67,19 @@ public class EquipmentChoose {
         }
         new EquipmentController().equip(TheWorld.getTheWorld().getPlayer(),weapon,armor);
         Main.getInstance().gotoBattleMap();
+    }
+
+    @FXML
+    void weaponchanged(ActionEvent event) {
+        String weapon = (((RadioButton)weaponsGroup.getSelectedToggle()).getText());
+        if(weapon.equals("枪")){
+            sight.setVisible(true);
+            stock.setVisible(true);
+        }else{
+            sight.setVisible(false);
+            stock.setVisible(false);
+        }
+        System.out.println(sight.isSelected());
     }
 
 }

@@ -1,21 +1,12 @@
 package main;
 
-import configuration.Map;
-import controller.BattleMap;
+import controller.BattleMapController;
+import view.BattleMap;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Label;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.TheWorld;
-import model.role.monster.Monster;
 
 
 public class Main extends Application {
@@ -68,7 +59,10 @@ public class Main extends Application {
     }
 
     public void gotoBattleMap(){
-        Scene sc = new Scene(new BattleMap().getPane(),1280,720);
+        BattleMap bm = new BattleMap();
+        BattleMapController bmc = new BattleMapController();
+        bm.addObserver(bmc);
+        Scene sc = new Scene(bm.getPane(),1280,720);
         stage.setScene(sc);
 
 

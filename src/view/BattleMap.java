@@ -1,5 +1,6 @@
-package controller;
+package view;
 
+import configuration.Images;
 import configuration.Map;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
@@ -17,10 +19,13 @@ import model.TheWorld;
 import model.role.monster.Monster;
 import model.role.player.Player;
 
-public class BattleMap {
+import java.util.Observable;
+
+public class BattleMap extends Observable  {
     AnchorPane ap;
     boolean inBattle;
     public BattleMap(){
+        super();
         ap = new AnchorPane();
         inBattle = false;
         Canvas c = new Canvas(700,700);
@@ -30,6 +35,8 @@ public class BattleMap {
         c.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
+                BattleMap.super.setChanged();
+                BattleMap.super.notifyObservers(event);
                 if(inBattle){
                     return;
                 }
@@ -61,13 +68,12 @@ public class BattleMap {
                     TheWorld.getTheWorld().getPlayer().setY(ty);
                 }
 
-                Map.repaint(c);
+                repaint(c);
             }
         });
         c.setFocusTraversable(true);
         c.requestFocus();
         ap.getChildren().addAll(c);
-        Map.repaint(c);
 
         Label hpLabel  = new Label("生命值");
         AnchorPane.setLeftAnchor(hpLabel,900.0);
@@ -119,6 +125,8 @@ public class BattleMap {
         AnchorPane.setLeftAnchor(gold,940.0);
         AnchorPane.setTopAnchor(gold,90.0);
         ap.getChildren().add(gold);
+
+        repaint(c);
     }
     public Pane getPane(){
         return ap;
@@ -145,25 +153,32 @@ public class BattleMap {
                 inBattle=false;
                 Map.monsterList.remove(monster);
                 ap.getChildren().remove(gp);
-                Map.repaint((Canvas)ap.getChildren().get(0));
             }
         });
-/*
-        Button loseButton = new Button("lose");
-        GridPane.setHalignment(loseButton, HPos.RIGHT);
-        gp.add(loseButton, 1, 2);
-        loseButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                inBattle=false;
-                ap.getChildren().remove(gp);
-                Main.getInstance().navigateTo("buildchoose");
-            }
-        });
-*/
         AnchorPane.setTopAnchor(gp,250.0);
         AnchorPane.setLeftAnchor(gp,50.0);
         ap.getChildren().add(gp);
         return winning;
+    }
+
+    public void repaint(Canvas c){
+        c.getGraphicsContext2D().clearRect(0,0,c.getWidth(),c.getHeight());
+        for(int i=0;i<Map.map.length;i++){
+            for(int j=0;j<Map.map[i].length;j++){
+                Image image = null;
+                if(Map.map[i][j]==0){
+                    image = (Image) Images.map.get("floor");
+                }
+                if(Map.map[i][j]==1){
+                    image = (Image)Images.map.get("wall");
+                }
+                c.getGraphicsContext2D().drawImage(image,j*Map.cell_width,i*Map.cell_height,Map.cell_width,Map.cell_height);
+            }
+        }
+
+        c.getGraphicsContext2D().drawImage((Image)Images.map.get("player"),TheWorld.getTheWorld().getPlayer().getX()*Map.cell_width,TheWorld.getTheWorld().getPlayer().getY()*Map.cell_height,Map.cell_width,Map.cell_height);
+        for(Monster monster:Map.monsterList){
+            c.getGraphicsContext2D().drawImage((Image)Images.map.get("monster"),monster.getX()*Map.cell_width,monster.getY()*Map.cell_height,Map.cell_width,Map.cell_height);
+        }
     }
 }
