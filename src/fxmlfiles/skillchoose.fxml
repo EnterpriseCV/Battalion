@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SkillChoose">
+   <children>
+      <Text layoutX="276.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="技能选择" />
+      <CheckBox fx:id="thump" layoutX="88.0" layoutY="95.0" mnemonicParsing="false" text="重击" />
+      <CheckBox fx:id="fire" layoutX="88.0" layoutY="128.0" mnemonicParsing="false" text="大火球" />
+      <Button layoutX="118.0" layoutY="275.0" mnemonicParsing="false" onAction="#naviBack" text="返回" />
+      <Button layoutX="409.0" layoutY="275.0" mnemonicParsing="false" onAction="#confirm" text="确定" />
+   </children>
+</AnchorPane>

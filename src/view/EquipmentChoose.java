@@ -66,7 +66,7 @@ public class EquipmentChoose {
             armor="armour";
         }
         new EquipmentController().equip(TheWorld.getTheWorld().getPlayer(),weapon,armor);
-        Main.getInstance().gotoBattleMap();
+        Main.getInstance().navigateTo("skillchoose");
     }
 
     @FXML
