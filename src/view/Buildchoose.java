@@ -25,6 +25,7 @@ public class Buildchoose {
             buildName = "master";
         }
         TheWorld.getTheWorld().setPlayer(new RoleController().createPlayer(buildName));
+        TheWorld.getTheWorld().setCurrentEnemy(TheWorld.getTheWorld().getPlayer());
         Main.getInstance().navigateTo("equipmentchoose");
     }
 }

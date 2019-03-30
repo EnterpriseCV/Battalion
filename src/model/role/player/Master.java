@@ -1,6 +1,7 @@
 package model.role.player;
 
 import configuration.Config;
+import model.PlayerState;
 
 /**
  * created by Kimone
@@ -18,6 +19,7 @@ public class Master extends Player {
         this.setExperience(experience);
         this.setLevel(level);
         this.setGold(gold);
+        this.setState(PlayerState.MOVING);
     }
 
     private static Master master = new Master(Config.master_name,Config.master_hitPoint, Config.master_defense,

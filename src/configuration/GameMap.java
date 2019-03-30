@@ -10,7 +10,7 @@ import model.role.monster.Monster;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Map {
+public class GameMap {
     public static final double cell_width = 30;
     public static final double cell_height = 30;
     public static final int map_size = 20;

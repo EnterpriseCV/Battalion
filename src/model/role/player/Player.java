@@ -1,5 +1,6 @@
 package model.role.player;
 
+import model.PlayerState;
 import model.equipment.EquipmentDecorator;
 import model.role.Role;
 import model.role.monster.Monster;
@@ -17,6 +18,16 @@ public abstract class Player extends Role {
     int experience;
     int level;
     int gold;
+    PlayerState state;
+
+    public PlayerState getState() {
+        return state;
+    }
+
+    public void setState(PlayerState state) {
+        this.state = state;
+    }
+
     List<EquipmentDecorator> equipments = new ArrayList<>();
     Map<String,Skill> skills = new HashMap<>();
 

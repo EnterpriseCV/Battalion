@@ -13,7 +13,7 @@ public class Config {
     public static final int warrior_magicPoint = 100;
     public static final int warrior_exp = 0;
     public static final int warrior_level = 1;
-    public static final int warrior_gold = 0;
+    public static final int warrior_gold = 100;
 
 
     //法师属性
@@ -24,7 +24,7 @@ public class Config {
     public static final int master_magicPoint = 10;
     public static final int master_exp = 0;
     public static final int master_level = 1;
-    public static final int master_gold = 0;
+    public static final int master_gold = 100;
 
 
     //法杖属性
@@ -58,7 +58,7 @@ public class Config {
     //大火球技能
     public static final String fire_name = "大火球";
     public static final int fire_level = 1;
-    public static final int fire_roleLevel = 3;
+    public static final int fire_roleLevel = 1;
     public static final int fire_magicPoint = 20;
     public static final double fire_damageRate = 1.5;
     public static final int fire_coolingTime = 5;

@@ -1,6 +1,7 @@
 package model.role.player;
 
 import configuration.Config;
+import model.PlayerState;
 
 /**
  * created by Kimone
@@ -18,6 +19,7 @@ public class Warrior extends Player {
         this.setExperience(experience);
         this.setLevel(level);
         this.setGold(gold);
+        this.setState(PlayerState.MOVING);
     }
 
     private static Warrior warrior = new Warrior(Config.warrior_name,Config.warrior_hitPoint, Config.warrior_defense,
