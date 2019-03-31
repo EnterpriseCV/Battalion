@@ -7,6 +7,15 @@ public class TheWorld {
     private static TheWorld theWorld = new TheWorld();
 
     private Player player;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Role getCurrentEnemy() {
         return currentEnemy;

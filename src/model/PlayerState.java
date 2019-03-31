@@ -1,5 +1,5 @@
 package model;
 
 public enum PlayerState {
-    MOVING,FIGHTING
+    MOVING,FIGHTING,DEAD
 }

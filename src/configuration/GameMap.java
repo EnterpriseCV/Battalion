@@ -44,5 +44,17 @@ public class GameMap {
         monster.setX(10);
         monster.setY(0);
         monsterList.add(monster);
+        monster=rc.createMonster("monster01");
+        monster.setX(11);
+        monster.setY(0);
+        monsterList.add(monster);
+        monster=rc.createMonster("monster01");
+        monster.setX(12);
+        monster.setY(0);
+        monsterList.add(monster);
+        monster=rc.createMonster("monster01");
+        monster.setX(13);
+        monster.setY(0);
+        monsterList.add(monster);
     }
 }

@@ -27,6 +27,7 @@ public class BattleMap extends Observable  {
     Text enemyhp,enemyAttack,enemyDefense;
     Map<String,Text> skillDescriptionMap;
     Map<String,Button> useSkillButtonMap;
+    Text message;
     public BattleMap(){
         super();
         ap = new AnchorPane();
@@ -48,6 +49,7 @@ public class BattleMap extends Observable  {
         playPanelInit();
         battlePanelInit();
         enemyPanelInit();
+        messagePanelInit();
 
         refresh();
     }
@@ -162,6 +164,23 @@ public class BattleMap extends Observable  {
         Map<String,Skill> skills = TheWorld.getTheWorld().getPlayer().getSkills();
         double curpos = 60;
         double leftdis = 900;
+        {
+            Button button = new Button("攻击");
+            button.setId("attack");
+            button.setFocusTraversable(false);
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    BattleMap.super.setChanged();
+                    BattleMap.super.notifyObservers(event);
+                }
+            });
+            useSkillButtonMap.put("攻击",button);
+            AnchorPane.setLeftAnchor(button,leftdis);
+            AnchorPane.setTopAnchor(button,curpos);
+            curpos+=20;
+            ap.getChildren().add(button);
+        }
         for(String skillName:skills.keySet()){
             Skill skill = skills.get(skillName);
 
@@ -201,6 +220,13 @@ public class BattleMap extends Observable  {
         AnchorPane.setTopAnchor(enemyDefense,50.0);
         ap.getChildren().add(enemyDefense);
     }
+    private void messagePanelInit(){
+        double leftdis = 900.0;
+        message = new Text();
+        AnchorPane.setLeftAnchor(message,leftdis);
+        AnchorPane.setTopAnchor(message,250.0);
+        ap.getChildren().add(message);
+    }
     public Pane getPane(){
         return ap;
     }
@@ -211,6 +237,11 @@ public class BattleMap extends Observable  {
         drawPlayerSkill();
         drawBattlePanel();
         drawEnemyPanel();
+        drawMessagePanel();
+    }
+
+    private void drawMessagePanel(){
+        message.setText(TheWorld.getTheWorld().getMessage());
     }
 
     private void drawEnemyPanel(){
@@ -226,7 +257,9 @@ public class BattleMap extends Observable  {
     private void drawBattlePanel(){
         for(String skillName:useSkillButtonMap.keySet()){
             useSkillButtonMap.get(skillName).setVisible(TheWorld.getTheWorld().getPlayer().getState().equals(PlayerState.FIGHTING));
-            useSkillButtonMap.get(skillName).setDisable(TheWorld.getTheWorld().getPlayer().getSkills().get(skillName).getRemainTime()!=0);
+            if(TheWorld.getTheWorld().getPlayer().getSkills().containsKey(skillName)) {
+                useSkillButtonMap.get(skillName).setDisable(TheWorld.getTheWorld().getPlayer().getSkills().get(skillName).getRemainTime() != 0);
+            }
         }
     }
 

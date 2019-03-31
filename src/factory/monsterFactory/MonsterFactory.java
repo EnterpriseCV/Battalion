@@ -20,10 +20,10 @@ public class MonsterFactory extends AbstractFactory {
     public Monster getMonster(String name) {
         Monster monster = null;
         if (name.equals("monster01")) {
-            monster = new Monster("怪物1", 50, 1, 10, 2, 10);
+            monster = new Monster("怪物1", 500, 15, 30, 20, 100);
         }
         if (name.equals("monster02")) {
-            monster = new Monster("怪物2", 80, 1, 20, 5, 10);
+            monster = new Monster("怪物2", 800, 1, 20, 5, 10);
         }
         return monster;
     }
