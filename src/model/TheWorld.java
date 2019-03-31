@@ -8,13 +8,19 @@ public class TheWorld {
 
     private Player player;
     private String message;
+    private int messageCount = 0;
 
     public String getMessage() {
+        if(messageCount>20){
+            messageCount=0;
+            message = "";
+        }
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+        messageCount+=1;
     }
 
     public Role getCurrentEnemy() {
